@@ -1,0 +1,109 @@
+[
+
+
+    {
+        "name": "topbar",
+        "layer": "top",
+        "position": "top",
+        "height": 30,
+        "modules-center": ["custom/weather","clock","custom/updates"],
+
+    	"custom/weather" :{
+            "return-type": "json",
+            "exec": "sh $HOME/.config/waybar/scripts/weather.sh",
+            "interval": 300,
+            
+    },	
+    	"clock":{
+    		"format": "{: %I:%M %p   %d/%m/%Y}",
+ 			"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+ 			"on-click": "gsimplecal",
+ 	},
+ 		"custom/updates":{
+ 			"exec": "sh /home/cr00k3d/.config/waybar/scripts/updates.sh",
+ 			"format":"{icon}{}",
+ 			"format-icons":"",
+ 			"on-click":"alacritty -e garuda-update",
+ 			"tooltip":"false"
+ 	},
+ 		
+ 	},
+
+    {
+        "name": "bottombar",
+        "layer": "top",
+        "position": "bottom",
+        "height": 30,
+        "modules-center": ["wlr/taskbar","network","pulseaudio","backlight","cpu","memory","disk","temperature","battery","tray","custom/power" ],
+
+        "tray": {
+            "icon-size": 13,
+            "spacing": 10
+        },
+        "wlr/taskbar": {
+            "format": "{icon}",
+            "icon-size": 13,
+            "tooltip": false,
+            "on-click": "activate"
+		},
+		"network": {
+            "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+			"format-wifi": "{essid}({signalStrength}%)",
+			"format-disconnected": "",
+			"format-ethernet": ""
+			
+		},
+		"pulseaudio": {
+            "scroll-step": 1,
+            "format": "{icon} {volume}%{format_source}",
+            "format-bluetooth": "{icon} {volume}%{format_source}",
+            "format-bluetooth-muted": " {icon}{format_source}",
+            "format-muted": " {format_source}",
+            "format-source": "  {volume}%",
+            "format-source-muted": " ",
+            "format-icons": {
+                "headphone": "",
+                "default": ["", "", ""]
+            },
+            "on-click": "pavucontrol"
+        },
+        "backlight": {
+            "format": "{icon} {percent}%",
+            "format-icons": ["", ""],
+        },
+        "cpu": {
+            "format": " {usage}%",
+            "tooltip": false
+        },
+        "disk": {
+            "format": " {}%",
+            "tooltip-format": "{used} / {total} used"
+        },
+        "memory": {
+            "format": " {}%",
+            "tooltip-format": "{used:0.1f}G / {total:0.1f}G used"
+        },
+        "temperature": {
+            "critical-threshold": 80,
+            "format": "{icon} {temperatureC}°C",
+            "format-icons": ["", "", "", "", ""]
+        },
+        "battery": {
+          "states": {
+            "good": 80,
+            "warning": 25,
+            "critical": 25,
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+       },
+        "custom/power": {
+                    "tooltip": false,
+                    "format": "",
+                    "on-click": "wlogout"
+        },
+    },
+]
