@@ -24,7 +24,8 @@
  			"format":"{icon}{}",
  			"format-icons":"",
  			"on-click":"alacritty -e garuda-update",
- 			"tooltip":"false"
+ 			"tooltip":"false",
+			"interval": 300,
  	},
  		
  	},
