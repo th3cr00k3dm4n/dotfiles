@@ -20,12 +20,13 @@
  			"on-click": "gsimplecal",
  	},
  		"custom/updates":{
- 			"exec": "sh /home/cr00k3d/.config/waybar/scripts/updates.sh",
  			"format":"{icon}{}",
  			"format-icons":"",
+			"exec": "checkupdates | wc -l",
+			"interval": 300,
  			"on-click":"alacritty -e garuda-update",
  			"tooltip":"false",
-			"interval": 300,
+			
  	},
  		
  	},
