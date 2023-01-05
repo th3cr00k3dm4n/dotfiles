@@ -1,5 +1,5 @@
 # dotfiles
-Dotfiles for wayfire
+## Dotfiles for Garuda wayfire
 
 Screenshots
 
